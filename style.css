@@ -5,6 +5,23 @@
     
 }
 b{
- background-color: blue;
+    background-color: blue;
     
+}
+
+html, body, #map-canvas{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#col-lg-6{
+    text-align: center
+    
+}
+
+
+h1{
+color: blue;
+text-align: center
 }
