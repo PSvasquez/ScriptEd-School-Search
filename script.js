@@ -196,9 +196,187 @@ function addMarkers(map) {
 
 var manhattanSchools = [
     
+     {
+
+        title: "Cristo Rey New York",
+        lat: 40.792451,
+        lng: -73.947345
+
+    },
+    
+    { 
+        title:"Harlem Village Academy High School",
+        lat: 40.749971,
+        lng: -73.992135
+
+    },
+    
+    {
+        title:"High School for Language and Diplomacy",
+        lat: 40.735324,
+        lng: -73.987081
+        
+    },
+    
+    {
+        title:"High School for Environmental Studies",
+        lat: 40.767976,
+        lng: -73.988180
+        
+    },
+    
+    {
+        title:"High School of Fashion Industries",
+        lat: 40.745660,
+        lng: -73.996412
+    },
+    
+    {
+        title:"Hudson High School of Learning Technologies",
+        lat: 40.743368,
+        lng: -74.002547
+    },
+    
+    {
+        title:"Landmark High School",
+        lat: 40.743122,
+        lng: -74.002508
+    },
+    
+    {
+        title:"Lower Manhattan Arts Academy",
+        lat: 40.716965,
+        lng: -73.989532
+    },
+    
+    {
+        title:"Manhattan International High School",
+        lat: 40.765734,
+        lng: -73.959815
+    },
+    
+    {
+        title:"Murry Bergtraum High School",
+        lat: 40.711276,
+        lng: -74.001665
+    },
+    
+    {
+        title:"Richard R Green High School",
+        lat: 40.705443,
+        lng: -74.012929
+    },
+    
+    {
+        title:"Urban Assembly Gateway School for Technology",
+        lat: 40.763994,
+        lng: -73.990487
+    },
+    
+    {
+        title:"Urban Assembly School of Design & Construction",
+        lat: 40.765536,
+        lng: -73.993163
+    },
+    
+    {
+        title:"Washington Heights Expeditionary Learning School",
+        lat: 40.849099,
+        lng: -73.931106
+    },
+    
+    {
+        title:"Young Women’s Leadership High School of East Harlem",
+        lat: 40.792935,
+        lng: -73.947168,
+    },
     
     
     
     
+    ];
     
-    ]
+    function addMarkers(map) {
+    for (i = 0; i < manhattanSchools.length; i++) {
+        var school = manhattanSchools[i];
+
+        var myLatlng = {
+            lat: school.lat,
+            lng: school.lng
+        };
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            title: school.title,
+            map: map
+        });
+    }
+}
+
+var advancedClasses = [
+    
+    {
+        title:"Bark&Co",
+        lat: 40.717895,
+        lng: -73.999289
+    },
+    
+    {
+        title:"Cristo Rey New York Advanced",
+        lat: 40.792451,
+        lng: -73.947345
+    },
+    
+    {
+        title:"Ebay",
+        lat: 40.740336,
+        lng: -73.995186
+    },
+    
+    {
+        title:"Etsy",
+        lat: 40.700595,
+        lng: -73.988143
+    },
+    
+    {
+        title:"Salesforce",
+        lat: 40.751713,
+        lng: -73.973257
+    },
+    
+    {
+        title:"TeachersPayTeachers",
+        lat: 40.737025,
+        lng: -73.987783
+    },
+    
+    {
+        title:"HBC",
+        lat: 40.758890,
+        lng: -73.974666
+    },
+    
+    {
+        title:"Oscar",
+        lat: 40.724554,
+        lng: -73.995385
+    },
+    
+    
+    ];
+    
+     function addMarkers(map) {
+    for (i = 0; i < advancedClasses.length; i++) {
+        var school = advancedClasses[i];
+
+        var myLatlng = {
+            lat: school.lat,
+            lng: school.lng
+        };
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            title: school.title,
+            map: map
+        });
+    }
+}
