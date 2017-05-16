@@ -5,24 +5,27 @@
     <title> Scripted School Search </title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-      
-        <script type="text/javascript" src="script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+    <script type="text/javascript" src="script.js"></script>
 </head>
 
 <body class>
     <h1> Scripted School Search </h1>
-    <div class="col-lg-6">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Location...">
-            <span class="input-group-btn">
-                <button class="btn btn-success" type="button">Go!</button>
-            </span>
-        </div>
-    </div>
+
+
+    <select class="form-control">
+     <option selected>All Schools</option>
+     <option>Brooklyn Schools</option>
+     <option>Queens Schools</option>
+     <option>Manhattan Schools</option>
+     <option>Advanced Schools</option>
+    </select>
     <div id="map-canvas" height="100px" width="200px"></div>
     <img src="http://newyorksubway.org/wp-content/uploads/2015/09/new-york-state-map.jpg" class="A">
-     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIDxPIVO5qzYODUY6GAklXGmk2HIrGpNE&callback=initialize" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIDxPIVO5qzYODUY6GAklXGmk2HIrGpNE&callback=initialize" async defer></script>
 </body>
 
 </html>

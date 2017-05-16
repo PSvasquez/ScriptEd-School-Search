@@ -1,45 +1,43 @@
+ var allMarkers = [];
+ 
 function initialize() {
     var mapOptions = {
-        zoom: 8,
+        zoom: 11,
         center: new google.maps.LatLng(40.741992, -73.927947)
     };
     var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-    // var myLatlng = {
-    //     lat: 40.741992,
-    //     lng: -73.927947
-    // };
-    // var marker = new google.maps.Marker({
-    //     position: myLatlng,
-    //     title: "Queens Vocational High School"
-    // });
-    // marker.setMap(map);
     
-    addMarkers(map);
+    addBrooklynMarkers(map);
+    addManhattanMarkers(map);
+    addAdvancedMarkers(map);
+    addQueensMarkers(map);
+    
+    $(".form-control").change(function(){
+        var selectedFilter = $(".form-control").val();
+        filtermarkers(selectedFilter);
+    });
+    
+    function filtermarkers(filter) {
+        for (i = 0; i < allMarkers.length; i++){
+            var marker = allMarkers[i];
+            
+        if (filter == "All Schools") {
+            
+            marker.setVisible(true);
+        
+        } else if (marker.category !== filter) {
+            
+            marker.setVisible(false);
+        }
+        
+        else {
+            marker.setVisible(true);
+        }
+            
+        }
+           
+    }
 }
-var brooklynNames = ["Academy of Innovative Technology", "All City Leadership", "Brooklyn School for Law and Technology", "Brooklyn Institute for Liberal Art",
-    "Brooklyn International High School", "City Polytechnic High School"
-];
-var brooklynLatLng = {
-    lat: 40.6928500,
-    lng: -73.8689910,
-    lat: 40.6975910,
-    lng: -73.9130970,
-    lat: 40.6884530,
-    lng: -73.9207640,
-    lat: 40.6586120,
-    lng: -73.9430920,
-    lat: 40.6973450,
-    lng: -73.9844960,
-    lat: 40.6956550,
-    lng: -73.9858310
-};
-
-
-
-
-
-
-
 
 var brooklynSchools = [
 
@@ -178,7 +176,7 @@ var brooklynSchools = [
 ];
 
 
-function addMarkers(map) {
+function addBrooklynMarkers(map) {
     for (i = 0; i < brooklynSchools.length; i++) {
         var school = brooklynSchools[i];
 
@@ -189,8 +187,11 @@ function addMarkers(map) {
         var marker = new google.maps.Marker({
             position: myLatlng,
             title: school.title,
+            category:"Brooklyn Schools",
             map: map
         });
+        
+        allMarkers.push(marker)
     }
 }
 
@@ -296,9 +297,36 @@ var manhattanSchools = [
     
     ];
     
-    function addMarkers(map) {
+    function addManhattanMarkers(map) {
     for (i = 0; i < manhattanSchools.length; i++) {
         var school = manhattanSchools[i];
+    
+        var myLatlng = {
+            lat: school.lat,
+            lng: school.lng
+        };
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            title: school.title,
+            category:"Manhattan Schools",
+            map: map
+        });
+        
+        allMarkers.push(marker)
+    }
+}
+var queensClasses = [
+    
+    {
+        title:"Queens Vocational and Technical High School",
+        lat:40.741992,
+        lng:-73.927947
+    }
+    
+    ];
+     function addQueensMarkers(map) {
+    for (i = 0; i < queensClasses.length; i++) {
+        var school = queensClasses[i];
 
         var myLatlng = {
             lat: school.lat,
@@ -307,11 +335,14 @@ var manhattanSchools = [
         var marker = new google.maps.Marker({
             position: myLatlng,
             title: school.title,
+            category:"Queens Schools",
             map: map
         });
+        
+        allMarkers.push(marker)
     }
-}
-
+    }
+    
 var advancedClasses = [
     
     {
@@ -365,18 +396,23 @@ var advancedClasses = [
     
     ];
     
-     function addMarkers(map) {
-    for (i = 0; i < advancedClasses.length; i++) {
-        var school = advancedClasses[i];
+    function addAdvancedMarkers(map) {
+        for (i = 0; i < advancedClasses.length; i++) {
+            var school = advancedClasses[i];
 
-        var myLatlng = {
-            lat: school.lat,
-            lng: school.lng
-        };
-        var marker = new google.maps.Marker({
-            position: myLatlng,
-            title: school.title,
-            map: map
-        });
+            var myLatlng = {
+                lat: school.lat,
+                lng: school.lng
+            };
+
+            var marker = new google.maps.Marker({
+                position: myLatlng,
+                title: school.title,
+                category:"Advanced Schools",
+                map: map
+            });
+            
+            allMarkers.push(marker)
+        }
     }
-}
+    
