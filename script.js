@@ -1,67 +1,5 @@
  var allMarkers = [];
 
- function initialize() {
-     var mapOptions = {
-         zoom: 11,
-         center: new google.maps.LatLng(40.741992, -73.927947)
-     };
-     var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-
-     addBrooklynMarkers(map);
-     addManhattanMarkers(map);
-     addAdvancedMarkers(map);
-     addQueensMarkers(map);
-
-     $(".form-control").change(function() {
-         var selectedFilter = $(".form-control").val();
-         filtermarkers(selectedFilter);
-     });
-
-     function filtermarkers(filter) {
-         for (i = 0; i < allMarkers.length; i++) {
-             var marker = allMarkers[i];
-
-             if (filter == "All Schools") {
-
-                 marker.setVisible(true);
-
-             }
-             else if (marker.category !== filter) {
-
-                 marker.setVisible(false);
-             }
-
-             else {
-                 marker.setVisible(true);
-             }
-
-         }
-
-     }
-    
-     var pinColorTwo = "33E3FF";
-     var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColorTwo,
-         new google.maps.Size(21, 34),
-         new google.maps.Point(0, 0),
-         new google.maps.Point(10, 34));
-
-     var pinColorThree = "FFCE33";
-     var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColorThree,
-         new google.maps.Size(21, 34),
-         new google.maps.Point(0, 0),
-         new google.maps.Point(10, 34));
-    
-     var pinColorFour = "33FF71";
-     var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColorFour,
-         new google.maps.Size(21, 34),
-         new google.maps.Point(0, 0),
-         new google.maps.Point(10, 34));
- 
-    var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
-        new google.maps.Size(40, 37),
-        new google.maps.Point(0, 0),
-        new google.maps.Point(12, 35));
-}
  var brooklynSchools = [
 
      {
@@ -197,38 +135,6 @@
      }
 
  ];
-
-
- function addBrooklynMarkers(map) {
-      var pinColorOne = "C133FF";
-     var pinImageOne = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColorOne,
-         new google.maps.Size(21, 34),
-         new google.maps.Point(0, 0),
-         new google.maps.Point(10, 34));
-    var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
-        new google.maps.Size(40, 37),
-        new google.maps.Point(0, 0),
-        new google.maps.Point(12, 35));
-     for (i = 0; i < brooklynSchools.length; i++) {
-         var school = brooklynSchools[i];
-
-         var myLatlng = {
-             lat: school.lat,
-             lng: school.lng
-         };
-         var marker = new google.maps.Marker({
-             position: myLatlng,
-             title: school.title,
-             category: "Brooklyn Schools",
-             map: map,
-             icon: pinImageOne,
-            shadow: pinShadow
-         });
-
-         allMarkers.push(marker)
-     }
- }
-
  var manhattanSchools = [
 
      {
@@ -330,58 +236,6 @@
 
 
  ];
-
- function addManhattanMarkers(map) {
-     for (i = 0; i < manhattanSchools.length; i++) {
-         var school = manhattanSchools[i];
-
-         var myLatlng = {
-             lat: school.lat,
-             lng: school.lng
-         };
-         var marker = new google.maps.Marker({
-             position: myLatlng,
-             title: school.title,
-             category: "Manhattan Schools",
-             map: map,
-             icon: pinImageTwo,
-            shadow: pinShadow
-         });
-
-         allMarkers.push(marker)
-     }
- }
- var queensClasses = [
-
-     {
-         title: "Queens Vocational and Technical High School",
-         lat: 40.741992,
-         lng: -73.927947
-     }
-
- ];
-
- function addQueensMarkers(map) {
-     for (i = 0; i < queensClasses.length; i++) {
-         var school = queensClasses[i];
-
-         var myLatlng = {
-             lat: school.lat,
-             lng: school.lng
-         };
-         var marker = new google.maps.Marker({
-             position: myLatlng,
-             title: school.title,
-             category: "Queens Schools",
-             map: map,
-             icon: pinImageThree,
-             shadow: pinShadow
-         });
-
-         allMarkers.push(marker)
-     }
- }
-
  var advancedClasses = [
 
      {
@@ -435,25 +289,182 @@
 
  ];
 
- function addAdvancedMarkers(map) {
-     for (i = 0; i < advancedClasses.length; i++) {
-         var school = advancedClasses[i];
 
-         var myLatlng = {
-             lat: school.lat,
-             lng: school.lng
-         };
+ var queensClasses = [
 
-         var marker = new google.maps.Marker({
-             position: myLatlng,
-             title: school.title,
-             category: "Advanced Schools",
-             map: map,
-             icon: pinImageFour,
-             shadow: pinShadow
-         });
+     {
+         title: "Queens Vocational and Technical High School",
+         lat: 40.741992,
+         lng: -73.927947
+     }
 
-         allMarkers.push(marker)
+ ];
+
+ function initialize() {
+     var mapOptions = {
+         zoom: 11,
+         center: new google.maps.LatLng(40.741992, -73.927947)
+     };
+     var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+     addBrooklynMarkers(map);
+     addManhattanMarkers(map);
+     addAdvancedMarkers(map);
+     addQueensMarkers(map);
+
+     $(".form-control").change(function() {
+         var selectedFilter = $(".form-control").val();
+         filtermarkers(selectedFilter);
+     });
+
+     function filtermarkers(filter) {
+         for (i = 0; i < allMarkers.length; i++) {
+             var marker = allMarkers[i];
+
+             if (filter == "All Schools") {
+
+                 marker.setVisible(true);
+
+             }
+             else if (marker.category !== filter) {
+
+                 marker.setVisible(false);
+             }
+
+             else {
+                 marker.setVisible(true);
+             }
+
+         }
+
+     }
+
+
+
+
+     function addBrooklynMarkers(map) {
+         var pinColorOne = "C133FF";
+         var pinImageOne = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColorOne,
+             new google.maps.Size(21, 34),
+             new google.maps.Point(0, 0),
+             new google.maps.Point(10, 34));
+         var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
+             new google.maps.Size(40, 37),
+             new google.maps.Point(0, 0),
+             new google.maps.Point(12, 35));
+         for (i = 0; i < brooklynSchools.length; i++) {
+             var school = brooklynSchools[i];
+
+             var myLatlng = {
+                 lat: school.lat,
+                 lng: school.lng
+             };
+             var marker = new google.maps.Marker({
+                 position: myLatlng,
+                 title: school.title,
+                 category: "Brooklyn Schools",
+                 map: map,
+                 icon: pinImageOne,
+                 shadow: pinShadow
+             });
+
+             allMarkers.push(marker)
+         }
+     }
+
+
+     function addManhattanMarkers(map) {
+         var pinColorTwo = "33E3FF";
+         var pinImageTwo = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColorTwo,
+             new google.maps.Size(21, 34),
+             new google.maps.Point(0, 0),
+             new google.maps.Point(10, 34));
+         var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
+             new google.maps.Size(40, 37),
+             new google.maps.Point(0, 0),
+             new google.maps.Point(12, 35));
+         for (i = 0; i < manhattanSchools.length; i++) {
+             var school = manhattanSchools[i];
+
+             var myLatlng = {
+                 lat: school.lat,
+                 lng: school.lng
+             };
+             var marker = new google.maps.Marker({
+                 position: myLatlng,
+                 title: school.title,
+                 category: "Manhattan Schools",
+                 map: map,
+                 icon: pinImageTwo,
+                 shadow: pinShadow
+             });
+
+             allMarkers.push(marker)
+         }
+     }
+
+     function addQueensMarkers(map) {
+         var pinColorThree = "FFCE33";
+         var pinImageThree = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColorThree,
+             new google.maps.Size(21, 34),
+             new google.maps.Point(0, 0),
+             new google.maps.Point(10, 34));
+         var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
+             new google.maps.Size(40, 37),
+             new google.maps.Point(0, 0),
+             new google.maps.Point(12, 35));
+         for (i = 0; i < queensClasses.length; i++) {
+             var school = queensClasses[i];
+
+             var myLatlng = {
+                 lat: school.lat,
+                 lng: school.lng
+             };
+             var marker = new google.maps.Marker({
+                 position: myLatlng,
+                 title: school.title,
+                 category: "Queens Schools",
+                 map: map,
+                 icon: pinImageThree,
+                 shadow: pinShadow
+             });
+
+             allMarkers.push(marker)
+         }
+     }
+
+
+     function addAdvancedMarkers(map) {
+         var pinColorFour = "33FF71";
+         var pinImageFour = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColorFour,
+             new google.maps.Size(21, 34),
+             new google.maps.Point(0, 0),
+             new google.maps.Point(10, 34));
+
+         var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
+             new google.maps.Size(40, 37),
+             new google.maps.Point(0, 0),
+             new google.maps.Point(12, 35));
+
+         for (i = 0; i < advancedClasses.length; i++) {
+             var school = advancedClasses[i];
+
+             var myLatlng = {
+                 lat: school.lat,
+                 lng: school.lng
+             };
+
+             var marker = new google.maps.Marker({
+                 position: myLatlng,
+                 title: school.title,
+                 category: "Advanced Schools",
+                 map: map,
+                 icon: pinImageFour,
+                 shadow: pinShadow
+             });
+
+             allMarkers.push(marker)
+         }
      }
  }
  
